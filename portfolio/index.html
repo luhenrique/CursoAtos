@@ -15,12 +15,12 @@
             <h3>Olá, eu sou o Luiz Henrique</h3>
             <h4>Apenas um apaixonado por pessoas e computação</h4>
             <button type="button" class="btn">
-                <a href="#">Experiências</a>
+                <a href="#experience">Experiências</a>
             </button>
         </div>
     </header>
 
-    <section class="section experience-sec">
+    <section id="experience" class="section experience-sec">
         <div class="section-header">Linguagens e Frameworks</div>
         <div class="experience-container">
             <div class="experience-item">
@@ -46,5 +46,22 @@
         </div>
     </section>
     
+    <section class="section contact-sec">
+        <div class="section-header">Contato</div>
+        <div class="contact-container">
+            <form id="contact-form">
+                <label for="name">Nome</label>
+                <input type="text" name="name">
+
+                <label for="email">Email</label>
+                <input type="text" name="email">
+
+                <label for="content">Mensagem</label>
+                <textarea name="content" id="content" placeholder="Escreva algo para mim."></textarea>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </div>
+    </section>
+
 </body>
 </html>

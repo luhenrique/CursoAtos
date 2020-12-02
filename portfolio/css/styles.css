@@ -42,7 +42,11 @@ html, body{
 
 }
 
+
 .btn{
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 40px;
     border: 2px solid #1976d2;
     width: 10em; /* Tamanho em relação a fonte*/
     height: 2.4em;
@@ -66,4 +70,108 @@ a{
    text-decoration: none;
    color: white; 
 }
+
+.section{
+    display: flex;
+    width: 100%;
+    margin-top: 3em;
+}
+
+.experience-sec{
+    flex-direction: column;
+    text-emphasis: center;
+    font-family: 'Space Mono', monospace;
+}
+
+.section-header{
+    margin: auto;
+    font-size: 25px;
+    padding: 16px 5px;
+    border-bottom: 3px solid #1976d2;
+
+}
+
+
+.experience-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 6em;
+}
+
+.experience-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+    border-radius: 4px;
+}
+
+.item-logo>img{
+    width: 100%;
+    height: 100%;
+}
+
+.item-logo{
+    width: 15em;
+    height: 15em;
+}
+
+.item-name{
+    font-size: 25px;
+    margin-top: 1.7em;
+}
+
+ .contact-sec{
+     min-height: 30em;
+     background-color: #63a4ff;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+
+ .contact-container{
+     width: 21em;
+     margin-top: 5em;
+     display: flex;
+ }
+
+ #contact-form{
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+ }
+
+ #contact-form>label{
+     color: white;
+     font-family: 'Space Mono', monospace;
+ }
+
+ #contact-form>input{
+     padding: 0, 5px;
+     height: 25px;
+     margin-top: 10px;
+     margin-bottom: 30px;
+     font-size: 16px;
+     border: 0;
+     border-bottom: 3px solid #1976d2 ;
+     box-shadow: 0px 0px 15px 3px rgba(15, 15, 15, 0.5);
+     font-family: 'Space Mono', monospace;
+ }
+
+ #contact-form>textarea{
+    padding: 0, 5px;
+     max-width: 100%;
+     min-height: 100%;
+     margin-bottom: 60px;
+     min-height: 125px;
+     font-size: 16px;
+     box-shadow: 0px 0px 15px 3px rgba(15, 15, 15, 0.5);
+     border-bottom: 3px solid #1976d2 ;
+ }
+
+ .contact-sec .section-header{
+    color: white;
+} 
 
