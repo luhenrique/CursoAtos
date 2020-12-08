@@ -66,7 +66,7 @@ html, body{
     background-color: transparent;
 }
 
-a{
+.btn-a{
    text-decoration: none;
    color: white; 
 }
@@ -125,7 +125,7 @@ a{
 
  .contact-sec{
      min-height: 30em;
-     background-color: #63a4ff;
+     background-color: #63a4ff; 
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -175,3 +175,27 @@ a{
     color: white;
 } 
 
+.footer{
+    background-color: #111;
+    text-align: center;
+    padding: 2.5em 0;
+    font-size: 30px;
+}
+
+.social-list{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 2em 0 0;
+    padding: 0;
+}
+
+.list-item{
+    margin: 0 .5em;
+}
+
+.item-link{
+    text-decoration: none;
+    color: white;
+    padding: .5em;
+}

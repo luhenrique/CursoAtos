@@ -1,0 +1,65 @@
+#sidebar-content{
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    overflow-y: auto;
+}
+
+.sidebar-item {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-item li{
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-item li a{
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-item li a:hover{
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-item >.sidebar-brand{
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-item > .sidebar-brand a{
+    color:#999999;
+}
+
+.sidebar-item > .sidebar-brand a:hover{
+    color: white;
+    background: none;
+}
+
+
+
+@media(min-width:768px) {
+    #sidebar-content {
+        width: 250px;
+    }
+}
+/*Atribui diferentes estilos CSS para diferentes resoluções de tela
+alternando entre os estilos assim que detecta diferentes resoluções*/
