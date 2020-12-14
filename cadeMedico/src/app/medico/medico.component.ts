@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedicoComponent implements OnInit {
 
- title = 'Médicos'
+ titleMedico = 'Médicos'
+
+ public selectedMedico: string;
 
  public medicos = [
    {id:'1',nome:'Luiz'   , especialidade:'Cardiologista', crm:'4325325', telefone:'646346343'},
@@ -17,6 +19,15 @@ export class MedicoComponent implements OnInit {
    {id:'5',nome:'Chico'  , especialidade:'Otorrinolaringologista', crm:'4325325', telefone:'646346343'}
   ]
   
+  selectMedico(medico: any){
+    this.selectedMedico = medico.nome;
+  }
+
+  back(){
+    this.selectedMedico = '';
+  }
+
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,9 +1,36 @@
-<h1>{{title}}</h1>
+<app-title [titleVar]="titleMedico"></app-title>
 
-<ul>
-    <li *ngFor="let medico of medicos">
-        {{medico.nome}}
-    </li>
-</ul>
+<div *ngIf="selectedMedico">
+  Detalhes do Médico: {{selectedMedico}}
+
+  <br>
+  <button class="btn btn-warning" (click)="back()">Voltar</button>
+
+</div>
+<div *ngIf="!selectedMedico">
+  
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Especialização</th>
+        <th scope="col">CRM</th>
+        <th scope="col">Telefone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let medico of medicos" style="cursor: pointer;" 
+       (click)="selectMedico(medico)">
+        <th scope="row">{{medico.id}}</th>
+        <td>{{medico.nome}}</td>
+        <td>{{medico.especialidade}}</td>
+        <td>{{medico.crm}}</td>
+        <td>{{medico.telefone}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
 
 

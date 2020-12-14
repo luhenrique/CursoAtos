@@ -8,6 +8,7 @@ import { CidadeComponent } from './cidade/cidade.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { TitleComponent } from './title/title.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     PerfilComponent,
     HomeComponent,
     SidebarComponent,
+    TitleComponent,
   ],
   imports: [
     BrowserModule,

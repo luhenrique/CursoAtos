@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CidadeComponent implements OnInit {
 
-  title = 'Cidades'
+  titleCidade = 'Cidades';
+  public selectedCidade: string;
 
   public cidades = [
   {id: '1', nome:'Apucarana', estado: 'PR'},
@@ -16,6 +17,14 @@ export class CidadeComponent implements OnInit {
   {id: '4', nome:'São Paulo', estado: 'SP'},
   {id: '5', nome:'Rio de Janeiro', estado: 'RJ'},
   ]
+
+  selectCidade(cidade: any){
+    this.selectedCidade = cidade.nome;
+  }
+
+  back(){
+    this.selectedCidade = '';
+  }
 
   constructor() { }
 
