@@ -1,12 +1,19 @@
-<app-title [titleVar]="titleCidade"></app-title>
-
 <div *ngIf="selectedCidade">
-  Detalhes do Cidade: {{selectedCidade}}
+  <app-title [titleVar]="'Cidade ID' + selectedCidade.id"></app-title>
   <br>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Nome</label>
+    <input type="text" value="{{selectedCidade.nome}}" class="form-control"  >
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Estado</label>
+    <input type="text" value="{{selectedCidade.estado}}"  class="form-control" >
+  </div>
+
   <button class="btn btn-warning" (click)="back()">Voltar</button>
 </div>
 <div *ngIf="!selectedCidade">
-  
+  <app-title [titleVar]="titleCidade"></app-title>  
   <table class="table table-hover">
     <thead>
       <tr>

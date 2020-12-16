@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { disableDebugTools } from '@angular/platform-browser';
+import { Medico } from '../models/Medico';
 
 @Component({
   selector: 'app-medico',
@@ -9,7 +11,7 @@ export class MedicoComponent implements OnInit {
 
  titleMedico = 'Médicos'
 
- public selectedMedico: string;
+ public selectedMedico: Medico;
 
  public medicos = [
    {id:'1',nome:'Luiz'   , especialidade:'Cardiologista', crm:'4325325', telefone:'646346343'},
@@ -19,12 +21,12 @@ export class MedicoComponent implements OnInit {
    {id:'5',nome:'Chico'  , especialidade:'Otorrinolaringologista', crm:'4325325', telefone:'646346343'}
   ]
   
-  selectMedico(medico: any){
-    this.selectedMedico = medico.nome;
+  selectMedico(medico: Medico){
+    this.selectedMedico = medico;
   }
 
   back(){
-    this.selectedMedico = '';
+    this.selectedMedico = null;
   }
 
 
@@ -34,3 +36,7 @@ export class MedicoComponent implements OnInit {
   }
 
 }
+
+
+
+

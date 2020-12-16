@@ -1,14 +1,31 @@
-<app-title [titleVar]="titleMedico"></app-title>
 
 <div *ngIf="selectedMedico">
-  Detalhes do Médico: {{selectedMedico}}
-
+  <app-title [titleVar]="'Médico ID: ' + selectedMedico.id"></app-title>
   <br>
+
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Nome</label>
+    <input type="text" value="{{selectedMedico.nome}}" class="form-control"  >
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">CRM</label>
+    <input type="number" value="{{selectedMedico.crm}}" class="form-control"  >
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Especialidade</label>
+    <input type="text" value="{{selectedMedico.especialidade}}" class="form-control" >
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Telefone</label>
+    <input type="number" value="{{selectedMedico.telefone}}" class="form-control">
+  </div>
+
   <button class="btn btn-warning" (click)="back()">Voltar</button>
 
 </div>
 <div *ngIf="!selectedMedico">
-  
+  <app-title [titleVar]="titleMedico"></app-title>
+  <p>Nenhum médico selecionado</p>
   <table class="table table-hover">
     <thead>
       <tr>
