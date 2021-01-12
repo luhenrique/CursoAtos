@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { disableDebugTools } from '@angular/platform-browser';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Medico } from '../models/Medico';
 
 @Component({
@@ -9,9 +11,11 @@ import { Medico } from '../models/Medico';
 })
 export class MedicoComponent implements OnInit {
 
- titleMedico = 'Médicos'
+ titleMedico = 'Médicos';
 
  public selectedMedico: Medico;
+ public medicoForm: FormGroup;
+
 
  public medicos = [
    {id:'1',nome:'Luiz'   , especialidade:'Cardiologista', crm:'4325325', telefone:'646346343'},
@@ -21,16 +25,39 @@ export class MedicoComponent implements OnInit {
    {id:'5',nome:'Chico'  , especialidade:'Otorrinolaringologista', crm:'4325325', telefone:'646346343'}
   ]
   
+
+  public modalRef: BsModalRef;
+
+  openModal(template: TemplateRef<any>){
+    this.modalRef = this.modalService.show(template);
+  }
+
+
+  createForm(){
+    this.medicoForm = this.fb.group({
+        nome: ['', Validators.required],
+        especialidade: ['', Validators.required],
+        crm: ['', Validators.required],
+        telefone: ['', Validators.required]
+    });
+  }
+
   selectMedico(medico: Medico){
     this.selectedMedico = medico;
+    this.medicoForm.patchValue(medico)
   }
 
   back(){
     this.selectedMedico = null;
   }
 
+  submit(){
+    console.log(this.medicoForm.value);
+  }
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private modalService:BsModalService) { 
+    this.createForm();
+  }
 
   ngOnInit(): void {
   }

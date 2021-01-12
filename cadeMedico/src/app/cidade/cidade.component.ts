@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cidade } from '../models/Cidade';
 
 @Component({
@@ -10,6 +11,7 @@ export class CidadeComponent implements OnInit {
 
   titleCidade = 'Cidades';
   public selectedCidade: Cidade;
+  public cidadeForm: FormGroup;
 
   public cidades = [
   {id: '1', nome:'Apucarana', estado: 'PR'},
@@ -19,15 +21,30 @@ export class CidadeComponent implements OnInit {
   {id: '5', nome:'Rio de Janeiro', estado: 'RJ'},
   ]
 
+
+  createForm(){
+    this.cidadeForm = this.fb.group({
+      nome: ['', Validators.required],
+      estado: ['', Validators.required]
+    })
+  }
+
   selectCidade(cidade: Cidade){
     this.selectedCidade = cidade;
+    this.cidadeForm.patchValue(cidade);
+  }
+
+  submit(){
+    console.log(this.cidadeForm.value);
   }
 
   back(){
     this.selectedCidade = null;
   }
 
-  constructor() { }
+  constructor(private fb:FormBuilder) { 
+    this.createForm();
+  }
 
   ngOnInit(): void {
   }
