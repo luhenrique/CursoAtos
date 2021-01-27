@@ -1,0 +1,96 @@
+CREATE DATABASE CADEMEDICO;
+USE CADEMEDICO;
+CREATE TABLE CIDADES(
+        Id INT PRIMARY KEY AUTO_INCREMENT,
+        Nome VARCHAR(30) NOT NULL,
+        Estado VARCHAR(2) NOT NULL
+);
+
+CREATE TABLE ESPECIALIDADE(
+        Id INT  PRIMARY KEY AUTO_INCREMENT,
+        Nome VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE CONVENIOS(
+        Id INT PRIMARY KEY AUTO_INCREMENT,
+        Nome VARCHAR(20) NOT NULL,
+        IdEspecialidades INT, 
+        FOREIGN KEY(IdEspecialidades) REFERENCES ESPECIALIDADE(Id)
+);
+
+CREATE TABLE PRIVILEGIOS(
+        Id INT  PRIMARY KEY AUTO_INCREMENT,
+        Nome VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE MEDICOS (
+    IdMedico int primary key AUTO_INCREMENT,
+    Nome varchar(100) not null,
+    Crm varchar(6) not null,
+    DataNasc DATE not null,
+    Tel varchar(11) not null,
+    Email varchar(50) not null,
+    Endereco varchar(50) not null,
+    Numero VARCHAR(5) NOT NULL,
+    Complemento VARCHAR(50),
+    Cep VARCHAR(8) NOT NULL,
+    IdCidade INT NOT NULL,
+    UF VARCHAR(2) NOT NULL,
+    IdEspecialidade INT NOT NULL,
+    Genero VARCHAR(8),
+    IdConvenios INT,
+    FOREIGN KEY(IdCidade) REFERENCES CIDADES(Id),
+    FOREIGN KEY(IdEspecialidade) REFERENCES ESPECIALIDADE(Id),
+    FOREIGN KEY(IdConvenios) REFERENCES CONVENIOS(Id)
+);
+
+
+CREATE TABLE USUARIOS(
+        Id INT  PRIMARY KEY AUTO_INCREMENT,
+        Nome  VARCHAR(100) NOT NULL,
+        Email VARCHAR(100) NOT NULL,
+        CPF VARCHAR(11) NOT NULL,
+        Login VARCHAR(15) NOT NULL,
+        Senha  VARCHAR(50) NOT NULL,
+        IdCidade INT NOT NULL,  
+        IdConvenios INT NOT NULL,
+        IdPrivilegio int(1) NOT NULL,
+        FOREIGN KEY(IdCidade) REFERENCES CIDADES(Id),
+        FOREIGN KEY(IdConvenios) REFERENCES CONVENIOS(Id),
+        FOREIGN KEY(IdPrivilegio) REFERENCES PRIVILEGIOS(Id)
+
+);
+
+INSERT INTO PRIVILEGIOS (Nome) VALUES ('Master'), ('Admin'), ('User'), ('Usermed');
+INSERT INTO CIDADES (Nome, Estado) VALUES ('Apucarana', 'PR'), ('Londrina', 'PR'), ('Maringá', 'PR'), ('São Paulo', 'SP'), ('Rio de Janeiro', 'RJ'), ('Ibiporã', 'PR');
+INSERT INTO ESPECIALIDADE (Nome) VALUES ('Clinico Geral'), ('Otorrinolaringologista'), ('Urologista'), ('Pisquiatra'), ('Podologo'), ('Cardiologista');
+INSERT INTO CONVENIOS (Nome, IdEspecialidades) VALUES ('UNIMED', '1'), ('pÉ', '5');
+INSERT INTO CONVENIOS (Nome) VALUES ('ABC'), ('Jorge'), ('AMIL'),('SULAMERICA');
+INSERT INTO MEDICOS (Nome, Crm, DataNasc, Tel, Email, Endereco, Numero, Complemento, Cep, IdCidade, UF, IdEspecialidade, Genero, IdConvenios) VALUES ('Luiz', '123456', 19970629, '88999955','luhenriqeu@gmail.com' ,'Rua Franko', '699', 'fundos', '86802338', '1', 'PR', '1', 'M', '1'),
+('Joao', '321456', 19860629, '33999955','joao@gmail.com' ,'Rua RUA', '99', 'NOIS', '4342338', '2', 'PR', '2', 'M', '2');
+INSERT INTO MEDICOS (Nome, Crm, DataNasc, Tel, Email, Endereco, Numero, Cep, IdCidade, UF, IdEspecialidade) VALUES ('Cloves', '645322', 19750629, '44399955','cloves@gmail.com' ,'Rua do cloves', '666', '86802338', '1', 'PR', '1'),
+('cleytin', '645322', 19750629, '44399955','cleytin@gmail.com' ,'Rua do cleitin', '666', '86802338', '1', 'PR', '1'),
+('Joana', '645322', 19750629, '4439932955','joana@gmail.com' ,'Rua da joana', '123', '86802338', '3', 'PR', '3'),
+('gretchen', '645322', 19750629, '4439932955','gretchen@gmail.com' ,'Rua da gretchen', '123', '86802338', '4', 'PR', '4');
+INSERT INTO USUARIOS (Nome, Email, CPF, Login, Senha, IdCidade, IdConvenios, IdPrivilegio) VALUES 
+('Luiz', 'luhenriqeu@gmail.com','86802335', 'Suroki', '123456', '1', '1', '2'), ('Jorgin', 'jorgin@gmail.com','86802335', 'JorginOBrabo', '123456', '1', '1', '1'), ('Cleytin', 'cley@gmail.com','86802335', 'clyitera', '123456', '1', '1', '3'),
+('Joana', 'dark@gmail.com','86802335', 'dark', '123456', '1', '1', '2'), ('Jose', 'jose@gmail.com','86802335', 'Maria', '123456', '1', '1', '1'), ('guilherme', 'gui@gmail.com','86802335', 'kwnood', MD5('123456'), '1', '1', '1');
+
+SHOW TABLES;
+SELECT * FROM CIDADES;
+SELECT * FROM ESPECIALIDADE;
+SELECT * FROM CONVENIOS;
+SELECT * FROM MEDICOS;
+SELECT * FROM USUARIOS;
+SELECT * FROM PRIVILEGIOS;
+
+
+
+
+
+
+
+
+
+
+

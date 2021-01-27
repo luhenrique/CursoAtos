@@ -1,0 +1,87 @@
+
+CREATE TABLE CIDADES(
+        Id INT PRIMARY KEY AUTO_INCREMENT,
+        Nome VARCHAR(30) NOT NULL,
+        Estado VARCHAR(2) NOT NULL
+);
+
+CREATE TABLE ESPECIALIDADE(
+        Id INT  PRIMARY KEY AUTO_INCREMENT,
+        Nome VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE CONVENIOS(
+        Id INT  PRIMARY KEY AUTO_INCREMENT,
+        Nome VARCHAR(20) NOT NULL,
+        IdEspecialidades INT NOT NULL, 
+        FOREIGN KEY(IdEspecialidades) REFERENCES ESPECIALIDADE(Id)
+);
+
+CREATE TABLE PRIVILEGIOS(
+        Id INT  PRIMARY KEY AUTO_INCREMENT,
+        Nome VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE MEDICOS (
+    IdMedico int primary key AUTO_INCREMENT,
+    Nome varchar(100) not null,
+    Crm varchar(6) not null,
+    DataNasc DATE not null,
+    Tel varchar(11) not null,
+    Email varchar(50) not null,
+    Endereco varchar(50) not null,
+    Numero VARCHAR(5) NOT NULL,
+    Complemento VARCHAR(50),
+    Cep VARCHAR(8) NOT NULL,
+    IdCidade INT NOT NULL,
+    UF VARCHAR(2) NOT NULL,
+    IdEspecialidade INT NOT NULL,
+    Genero VARCHAR(8),
+    IdConvenios INT,
+    FOREIGN KEY(IdCidade) REFERENCES CIDADES(Id),
+    FOREIGN KEY(IdEspecialidade) REFERENCES ESPECIALIDADE(Id),
+    FOREIGN KEY(IdConvenios) REFERENCES CONVENIOS(Id)
+);
+
+
+CREATE TABLE USUARIOS(
+        Id INT  PRIMARY KEY AUTO_INCREMENT,
+        Nome  VARCHAR(100) NOT NULL,
+        Email VARCHAR(100) NOT NULL,
+        CPF VARCHAR(11) NOT NULL,
+        Login VARCHAR(15) NOT NULL,
+        Senha  VARCHAR(50) NOT NULL,
+        IdCidade INT NOT NULL,  
+        IdConvenios INT NOT NULL,
+        IdPrivilegio int(1) NOT NULL,
+        FOREIGN KEY(IdCidade) REFERENCES CIDADES(Id),
+        FOREIGN KEY(IdConvenios) REFERENCES CONVENIOS(Id),
+        FOREIGN KEY(IdPrivilegio) REFERENCES PRIVILEGIOS(Id)
+
+);
+
+
+
+
+
+ORDEM DE POVOAMENTO
+
+        1- PRIVILEGIOS
+        2- CIDADES
+        3- ESPECIALIDADE
+        4- USUARIOS
+        5- MEDICOS
+        6- CONVENIOS
+
+
+
+        PRIVILEGIOS     
+                1- MASTER (CARA QUE MANDA)
+                2- ADM
+                3- USER 
+                4- USRM   
+
+
+INSERT INTO CIDADES (Nome) VALUES ('Apucarana', 'PR'), ('Londrina', 'PR');
+
+
