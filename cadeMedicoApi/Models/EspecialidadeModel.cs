@@ -5,16 +5,14 @@ namespace cadeMedicoApi.Models
     {
         public EspecialidadeModel()
         { }
-        public EspecialidadeModel(int id, string nome, MedicoModel medico)
+        public EspecialidadeModel(int id, string nome)
         {
-            this.Id = id;
-            this.Nome = nome;
-            this.Medico = medico;
+                this.Id = id;
+                this.Nome = nome;
 
-        }
+         }
         public int Id { get; set; }
         public string Nome { get; set; }
 
-        public MedicoModel Medico { get; set; }
     }
 }
