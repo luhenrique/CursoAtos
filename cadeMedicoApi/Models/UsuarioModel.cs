@@ -4,19 +4,19 @@ namespace cadeMedicoApi.Models
     {
         public UsuarioModel(){}
         
-        public UsuarioModel(int id, string nome, string login, string senha, int idPrivilegio)
+        public UsuarioModel(int id, string nome, string login, string senha, int Privilegioid)
         {
             this.Id = id;
             this.Nome = nome;
             this.Login = login;
             this.Senha = senha;
-            this.IdPrivilegio = idPrivilegio;
+            this.PrivilegioId = Privilegioid;
 
         }
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }
-        public int IdPrivilegio { get; set; }
+        public int PrivilegioId { get; set; }
     }
 }

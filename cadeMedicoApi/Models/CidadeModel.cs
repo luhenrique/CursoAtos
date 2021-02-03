@@ -4,16 +4,16 @@ namespace cadeMedicoApi.Models
     {
         public CidadeModel()
         {}
-        public CidadeModel(int id, int nome, int estado)
+        public CidadeModel(int id, string nome, string estado)
         {
-            this.id = id;
-            this.nome = nome;
-            this.estado = estado;
+            this.Id = id;
+            this.Nome = nome;
+            this.Estado = estado;
 
         }
-        public int id { get; set; }
-        public int nome { get; set; }
-        public int estado { get; set; }
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Estado { get; set; }
 
 
 

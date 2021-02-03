@@ -6,20 +6,22 @@ namespace cadeMedicoApi.Models
         public MedicoModel() { }
 
 
-        public MedicoModel(int id, string nome, string especialidade, string crm, string telefone)
+        public MedicoModel(int id, string nome, int especialidade, string crm, string telefone, int cidade)
         {
-            this.id = id;
-            this.nome = nome;
-            this.especialidade = especialidade;
-            this.crm = crm;
-            this.telefone = telefone;
+            this.Id = id;
+            this.Nome = nome;
+            this.EspecialidadeId = especialidade;
+            this.Crm = crm;
+            this.Telefone = telefone;
+            this.CidadeId = cidade;
 
         }
-        public int id { get; set; }
-        public string nome { get; set; }
-        public string especialidade { get; set; }
-        public string crm { get; set; }
-        public string telefone { get; set; }
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public int EspecialidadeId { get; set; }
+        public string Crm { get; set; }
+        public string Telefone { get; set; }
+        public int CidadeId { get; set; }
 
     }
 }

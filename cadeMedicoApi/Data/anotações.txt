@@ -1,0 +1,30 @@
+
+
+
+CRIANDO BANCO DE DADOS COM ENTITY FRAMEWORK
+
+    - ENTITY FRAMEWORK - É um framework de manipulação de mapeamento de banco de DADOS  
+                            a partir de orientação a objetos.
+
+    - PASSOS PARA USAR O EF
+
+        - INSTALAR O EF PELO NUGET
+        - CRIAR MODELS QUE SERVIRÃO DE MODELO PARA O BANCO DE DADOS
+        - CRIAR DATACONTEXT 
+                - POVOAMENTO INICIAL E PARAMETROS DE MAPEAMENTO DO BANCO DE DADOS 
+        
+                  public DbSet<MedicoModel> Medicos{get; set;} 
+                        PASSA PARA O EF A CLASSE DE MODELO PARA CRIAR A TABELA 
+
+                  builder.Entity<MedicoModel>()
+                .HasData(new List<MedicoModel>()
+                        PASSA UMA LISTA DE DADOS QUE SERÃO UTILIZADOS PARA O POVOAMENTO
+
+                
+                 builder.Entity<MedicoCidade>()
+                .HasKey(MC => new {MC.MedicoId, MC.CidadeId});
+                        CRIA UMA RELAÇÃO ENTRE TABELAS => N P/ N
+
+        - RODA O EF PARA CRIAR AS MIGRATIONS
+        - CRIAR STRING DE CONEXÃO COM BANCO DE DADOS 
+        - REZAR PRA DEUS PARA NÃO DAR ERRO
