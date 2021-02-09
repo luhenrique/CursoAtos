@@ -8,7 +8,7 @@ using cadeMedicoApi.Data;
 namespace cadeMedicoApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210203012337_initial")]
+    [Migration("20210206001145_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -130,7 +130,7 @@ namespace cadeMedicoApi.Migrations
                         new
                         {
                             MedicoId = 2,
-                            CidadeId = 2
+                            CidadeId = 3
                         },
                         new
                         {
@@ -149,20 +149,56 @@ namespace cadeMedicoApi.Migrations
                         });
                 });
 
+            modelBuilder.Entity("cadeMedicoApi.Models.MedicoEspecialidade", b =>
+                {
+                    b.Property<int>("MedicoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("EspecialidadeId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("MedicoId", "EspecialidadeId");
+
+                    b.HasIndex("EspecialidadeId");
+
+                    b.ToTable("MedicoEspecialidade");
+
+                    b.HasData(
+                        new
+                        {
+                            MedicoId = 1,
+                            EspecialidadeId = 1
+                        },
+                        new
+                        {
+                            MedicoId = 2,
+                            EspecialidadeId = 3
+                        },
+                        new
+                        {
+                            MedicoId = 3,
+                            EspecialidadeId = 3
+                        },
+                        new
+                        {
+                            MedicoId = 4,
+                            EspecialidadeId = 4
+                        },
+                        new
+                        {
+                            MedicoId = 5,
+                            EspecialidadeId = 5
+                        });
+                });
+
             modelBuilder.Entity("cadeMedicoApi.Models.MedicoModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CidadeId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Crm")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("EspecialidadeId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
                         .HasColumnType("TEXT");
@@ -178,45 +214,35 @@ namespace cadeMedicoApi.Migrations
                         new
                         {
                             Id = 1,
-                            CidadeId = 1,
                             Crm = "323440",
-                            EspecialidadeId = 2,
                             Nome = "Luiz",
                             Telefone = "900999"
                         },
                         new
                         {
                             Id = 2,
-                            CidadeId = 2,
                             Crm = "434440",
-                            EspecialidadeId = 1,
                             Nome = "Joao",
                             Telefone = "912999"
                         },
                         new
                         {
                             Id = 3,
-                            CidadeId = 3,
                             Crm = "6464440",
-                            EspecialidadeId = 3,
                             Nome = "Clyetin",
                             Telefone = "932999"
                         },
                         new
                         {
                             Id = 4,
-                            CidadeId = 4,
                             Crm = "756440",
-                            EspecialidadeId = 5,
                             Nome = "Jorgin",
                             Telefone = "944999"
                         },
                         new
                         {
                             Id = 5,
-                            CidadeId = 5,
                             Crm = "756440",
-                            EspecialidadeId = 4,
                             Nome = "Joana",
                             Telefone = "953999"
                         });
@@ -321,13 +347,13 @@ namespace cadeMedicoApi.Migrations
             modelBuilder.Entity("cadeMedicoApi.Models.MedicoCidade", b =>
                 {
                     b.HasOne("cadeMedicoApi.Models.CidadeModel", "Cidade")
-                        .WithMany()
+                        .WithMany("MedicoCidade")
                         .HasForeignKey("CidadeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("cadeMedicoApi.Models.MedicoModel", "Medico")
-                        .WithMany()
+                        .WithMany("MedicoCidade")
                         .HasForeignKey("MedicoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -335,6 +361,42 @@ namespace cadeMedicoApi.Migrations
                     b.Navigation("Cidade");
 
                     b.Navigation("Medico");
+                });
+
+            modelBuilder.Entity("cadeMedicoApi.Models.MedicoEspecialidade", b =>
+                {
+                    b.HasOne("cadeMedicoApi.Models.EspecialidadeModel", "Especialidade")
+                        .WithMany("MedicoEspecialidade")
+                        .HasForeignKey("EspecialidadeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("cadeMedicoApi.Models.MedicoModel", "Medico")
+                        .WithMany("MedicoEspecialidade")
+                        .HasForeignKey("MedicoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Especialidade");
+
+                    b.Navigation("Medico");
+                });
+
+            modelBuilder.Entity("cadeMedicoApi.Models.CidadeModel", b =>
+                {
+                    b.Navigation("MedicoCidade");
+                });
+
+            modelBuilder.Entity("cadeMedicoApi.Models.EspecialidadeModel", b =>
+                {
+                    b.Navigation("MedicoEspecialidade");
+                });
+
+            modelBuilder.Entity("cadeMedicoApi.Models.MedicoModel", b =>
+                {
+                    b.Navigation("MedicoCidade");
+
+                    b.Navigation("MedicoEspecialidade");
                 });
 #pragma warning restore 612, 618
         }

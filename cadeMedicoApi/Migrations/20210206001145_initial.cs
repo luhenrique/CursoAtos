@@ -40,10 +40,8 @@ namespace cadeMedicoApi.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nome = table.Column<string>(type: "TEXT", nullable: true),
-                    EspecialidadeId = table.Column<int>(type: "INTEGER", nullable: false),
                     Crm = table.Column<string>(type: "TEXT", nullable: true),
-                    Telefone = table.Column<string>(type: "TEXT", nullable: true),
-                    CidadeId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Telefone = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -103,6 +101,30 @@ namespace cadeMedicoApi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "MedicoEspecialidade",
+                columns: table => new
+                {
+                    MedicoId = table.Column<int>(type: "INTEGER", nullable: false),
+                    EspecialidadeId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MedicoEspecialidade", x => new { x.MedicoId, x.EspecialidadeId });
+                    table.ForeignKey(
+                        name: "FK_MedicoEspecialidade_Especialidades_EspecialidadeId",
+                        column: x => x.EspecialidadeId,
+                        principalTable: "Especialidades",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MedicoEspecialidade_Medicos_MedicoId",
+                        column: x => x.MedicoId,
+                        principalTable: "Medicos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Cidades",
                 columns: new[] { "Id", "Estado", "Nome" },
@@ -155,28 +177,28 @@ namespace cadeMedicoApi.Migrations
 
             migrationBuilder.InsertData(
                 table: "Medicos",
-                columns: new[] { "Id", "CidadeId", "Crm", "EspecialidadeId", "Nome", "Telefone" },
-                values: new object[] { 5, 5, "756440", 4, "Joana", "953999" });
+                columns: new[] { "Id", "Crm", "Nome", "Telefone" },
+                values: new object[] { 5, "756440", "Joana", "953999" });
 
             migrationBuilder.InsertData(
                 table: "Medicos",
-                columns: new[] { "Id", "CidadeId", "Crm", "EspecialidadeId", "Nome", "Telefone" },
-                values: new object[] { 4, 4, "756440", 5, "Jorgin", "944999" });
+                columns: new[] { "Id", "Crm", "Nome", "Telefone" },
+                values: new object[] { 4, "756440", "Jorgin", "944999" });
 
             migrationBuilder.InsertData(
                 table: "Medicos",
-                columns: new[] { "Id", "CidadeId", "Crm", "EspecialidadeId", "Nome", "Telefone" },
-                values: new object[] { 2, 2, "434440", 1, "Joao", "912999" });
+                columns: new[] { "Id", "Crm", "Nome", "Telefone" },
+                values: new object[] { 2, "434440", "Joao", "912999" });
 
             migrationBuilder.InsertData(
                 table: "Medicos",
-                columns: new[] { "Id", "CidadeId", "Crm", "EspecialidadeId", "Nome", "Telefone" },
-                values: new object[] { 1, 1, "323440", 2, "Luiz", "900999" });
+                columns: new[] { "Id", "Crm", "Nome", "Telefone" },
+                values: new object[] { 1, "323440", "Luiz", "900999" });
 
             migrationBuilder.InsertData(
                 table: "Medicos",
-                columns: new[] { "Id", "CidadeId", "Crm", "EspecialidadeId", "Nome", "Telefone" },
-                values: new object[] { 3, 3, "6464440", 3, "Clyetin", "932999" });
+                columns: new[] { "Id", "Crm", "Nome", "Telefone" },
+                values: new object[] { 3, "6464440", "Clyetin", "932999" });
 
             migrationBuilder.InsertData(
                 table: "Privilegios",
@@ -226,7 +248,7 @@ namespace cadeMedicoApi.Migrations
             migrationBuilder.InsertData(
                 table: "MedicoCidade",
                 columns: new[] { "CidadeId", "MedicoId" },
-                values: new object[] { 2, 2 });
+                values: new object[] { 3, 2 });
 
             migrationBuilder.InsertData(
                 table: "MedicoCidade",
@@ -243,19 +265,49 @@ namespace cadeMedicoApi.Migrations
                 columns: new[] { "CidadeId", "MedicoId" },
                 values: new object[] { 5, 5 });
 
+            migrationBuilder.InsertData(
+                table: "MedicoEspecialidade",
+                columns: new[] { "EspecialidadeId", "MedicoId" },
+                values: new object[] { 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "MedicoEspecialidade",
+                columns: new[] { "EspecialidadeId", "MedicoId" },
+                values: new object[] { 3, 2 });
+
+            migrationBuilder.InsertData(
+                table: "MedicoEspecialidade",
+                columns: new[] { "EspecialidadeId", "MedicoId" },
+                values: new object[] { 3, 3 });
+
+            migrationBuilder.InsertData(
+                table: "MedicoEspecialidade",
+                columns: new[] { "EspecialidadeId", "MedicoId" },
+                values: new object[] { 4, 4 });
+
+            migrationBuilder.InsertData(
+                table: "MedicoEspecialidade",
+                columns: new[] { "EspecialidadeId", "MedicoId" },
+                values: new object[] { 5, 5 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_MedicoCidade_CidadeId",
                 table: "MedicoCidade",
                 column: "CidadeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MedicoEspecialidade_EspecialidadeId",
+                table: "MedicoEspecialidade",
+                column: "EspecialidadeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Especialidades");
+                name: "MedicoCidade");
 
             migrationBuilder.DropTable(
-                name: "MedicoCidade");
+                name: "MedicoEspecialidade");
 
             migrationBuilder.DropTable(
                 name: "Privilegios");
@@ -265,6 +317,9 @@ namespace cadeMedicoApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cidades");
+
+            migrationBuilder.DropTable(
+                name: "Especialidades");
 
             migrationBuilder.DropTable(
                 name: "Medicos");

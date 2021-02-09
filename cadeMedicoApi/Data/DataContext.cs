@@ -1,5 +1,3 @@
-
-
 using System.Collections.Generic;
 using cadeMedicoApi.Models;
 using Microsoft.EntityFrameworkCore;
@@ -20,11 +18,11 @@ namespace cadeMedicoApi.Data
 
             builder.Entity<MedicoModel>()
                 .HasData(new List<MedicoModel>(){
-                    new MedicoModel(1, "Luiz", 2, "323440", "900999",1),
-                    new MedicoModel(2, "Joao", 1, "434440", "912999",2),
-                    new MedicoModel(3, "Clyetin", 3, "6464440", "932999",3),
-                    new MedicoModel(4, "Jorgin", 5, "756440", "944999",4),
-                    new MedicoModel(5, "Joana", 4, "756440", "953999",5)
+                    new MedicoModel(1, "Luiz", "323440", "900999"),
+                    new MedicoModel(2, "Joao", "434440", "912999"),
+                    new MedicoModel(3, "Clyetin", "6464440", "932999"),
+                    new MedicoModel(4, "Jorgin", "756440", "944999"),
+                    new MedicoModel(5, "Joana",  "756440", "953999")
             });
 
                         builder.Entity<CidadeModel>()
@@ -68,11 +66,24 @@ namespace cadeMedicoApi.Data
 
             builder.Entity<MedicoCidade>().HasData(new List<MedicoCidade>(){
                 new MedicoCidade() {MedicoId = 1, CidadeId = 1},
-                new MedicoCidade() {MedicoId = 2, CidadeId = 2},
+                new MedicoCidade() {MedicoId = 2, CidadeId = 3},
                 new MedicoCidade() {MedicoId = 3, CidadeId = 3},
                 new MedicoCidade() {MedicoId = 4, CidadeId = 4},
                 new MedicoCidade() {MedicoId = 5, CidadeId = 5},
             });
+
+              builder.Entity<MedicoEspecialidade>()
+                .HasKey(MC => new {MC.MedicoId, MC.EspecialidadeId});
+
+            builder.Entity<MedicoEspecialidade>().HasData(new List<MedicoEspecialidade>(){
+                new MedicoEspecialidade() {MedicoId = 1, EspecialidadeId = 1},
+                new MedicoEspecialidade() {MedicoId = 2, EspecialidadeId = 3},
+                new MedicoEspecialidade() {MedicoId = 3, EspecialidadeId = 3},
+                new MedicoEspecialidade() {MedicoId = 4, EspecialidadeId = 4},
+                new MedicoEspecialidade() {MedicoId = 5, EspecialidadeId = 5},
+            });
+
+            
         }
 
     }

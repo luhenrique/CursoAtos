@@ -28,3 +28,27 @@ CRIANDO BANCO DE DADOS COM ENTITY FRAMEWORK
         - RODA O EF PARA CRIAR AS MIGRATIONS
         - CRIAR STRING DE CONEXÃO COM BANCO DE DADOS 
         - REZAR PRA DEUS PARA NÃO DAR ERRO
+
+
+        async - função assincrona 
+        async -> promise 
+
+        await
+
+
+        função async grava(){
+                await sleep(5) grava
+        }
+
+
+joao => 3
+
+etMedicoModelById(3, true)
+      
+      {id: 3
+      nome: jorge
+
+}
+
+metodo buscarArtista()
+        'select * from Usuarios where user = 'sfasfas' or '1 = 1 

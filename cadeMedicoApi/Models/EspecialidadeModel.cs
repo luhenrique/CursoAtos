@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace cadeMedicoApi.Models
 {
 
@@ -13,6 +15,8 @@ namespace cadeMedicoApi.Models
          }
         public int Id { get; set; }
         public string Nome { get; set; }
+
+        public IEnumerable<MedicoEspecialidade> MedicoEspecialidade{get; set;}
 
     }
 }

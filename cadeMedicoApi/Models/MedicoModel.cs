@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace cadeMedicoApi.Models
 {
     public class MedicoModel
@@ -6,22 +8,21 @@ namespace cadeMedicoApi.Models
         public MedicoModel() { }
 
 
-        public MedicoModel(int id, string nome, int especialidade, string crm, string telefone, int cidade)
+        public MedicoModel(int id, string nome, string crm, string telefone)
         {
             this.Id = id;
             this.Nome = nome;
-            this.EspecialidadeId = especialidade;
             this.Crm = crm;
             this.Telefone = telefone;
-            this.CidadeId = cidade;
 
         }
         public int Id { get; set; }
         public string Nome { get; set; }
-        public int EspecialidadeId { get; set; }
         public string Crm { get; set; }
         public string Telefone { get; set; }
-        public int CidadeId { get; set; }
+
+        public IEnumerable<MedicoCidade> MedicoCidade { get; set; }
+        public IEnumerable<MedicoEspecialidade> MedicoEspecialidade{get; set;}
 
     }
 }
