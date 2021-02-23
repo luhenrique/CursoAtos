@@ -31,6 +31,14 @@ namespace cadeMedicoApi
             services.AddDbContext<DataContext>(
                 db => db.UseSqlite(Configuration.GetConnectionString("DbConnection"))
             );
+
+
+            services.AddScoped<IRepository, Repository>();
+            
+            services.AddControllers().AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling 
+            = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -48,11 +56,13 @@ namespace cadeMedicoApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "cadeMedicoApi v1"));
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {

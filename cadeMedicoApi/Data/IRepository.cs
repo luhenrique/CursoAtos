@@ -16,5 +16,13 @@ namespace cadeMedicoApi.Data
         Task<MedicoModel[]> GetAllMedicoModelAsync(bool includeMedico);
         Task<MedicoModel[]> GetMedicoModelByEspecialidadeId(int EspecialidadeId, bool includeEspecialidade);
         Task<MedicoModel> GetMedicoModelById(int medicoId, bool includeCidade);
+
+        //CIDADE
+        Task<CidadeModel[]> GetAllCidadeModelAsync(bool includeCidade);
+        Task<CidadeModel> GetCidadeModelById(int cidadeId, bool includeMedico);
+
+        //USUARIOS
+        Task<UsuarioModel[]> GetAllUsuarioModelAsync();
+        Task<UsuarioModel> GetUsuarioModelById(int usuarioId);
     }
 }

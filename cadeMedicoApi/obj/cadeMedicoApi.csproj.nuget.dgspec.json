@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/luiz/Documentos/CursoAtos/cadeMedicoApi/cadeMedicoApi.csproj": {}
+    "/home/luiz/Documentos/aulasAtos/CursoAtos/cadeMedicoApi/cadeMedicoApi.csproj": {}
   },
   "projects": {
-    "/home/luiz/Documentos/CursoAtos/cadeMedicoApi/cadeMedicoApi.csproj": {
+    "/home/luiz/Documentos/aulasAtos/CursoAtos/cadeMedicoApi/cadeMedicoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/luiz/Documentos/CursoAtos/cadeMedicoApi/cadeMedicoApi.csproj",
+        "projectUniqueName": "/home/luiz/Documentos/aulasAtos/CursoAtos/cadeMedicoApi/cadeMedicoApi.csproj",
         "projectName": "cadeMedicoApi",
-        "projectPath": "/home/luiz/Documentos/CursoAtos/cadeMedicoApi/cadeMedicoApi.csproj",
+        "projectPath": "/home/luiz/Documentos/aulasAtos/CursoAtos/cadeMedicoApi/cadeMedicoApi.csproj",
         "packagesPath": "/home/luiz/.nuget/packages/",
-        "outputPath": "/home/luiz/Documentos/CursoAtos/cadeMedicoApi/obj/",
+        "outputPath": "/home/luiz/Documentos/aulasAtos/CursoAtos/cadeMedicoApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/luiz/.nuget/NuGet/NuGet.Config"
@@ -51,6 +51,10 @@
               "noWarn": [
                 "NU1605"
               ]
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[5.0.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

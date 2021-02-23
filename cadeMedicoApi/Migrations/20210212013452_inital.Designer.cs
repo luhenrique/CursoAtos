@@ -8,8 +8,8 @@ using cadeMedicoApi.Data;
 namespace cadeMedicoApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210206001145_initial")]
-    partial class initial
+    [Migration("20210212013452_inital")]
+    partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

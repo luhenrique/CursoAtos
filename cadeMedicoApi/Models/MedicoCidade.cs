@@ -16,5 +16,7 @@ namespace cadeMedicoApi.Models
         public int CidadeId { get; set; }
         public MedicoModel Medico { get; set; }
         public CidadeModel Cidade { get; set; }
+
+
     }
 }
