@@ -1,2 +1,2 @@
 # CursoAtos
-Repositório de atividade desenvolvidas durante o curso de técnicas de desenvolvimento .net
+Repositório de atividade desenvolvidas durante o curso ministrado para funcionarios da ATOS - Técnicas de Desenvolvimento em .NET
